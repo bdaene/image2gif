@@ -1,0 +1,5 @@
+name: image2gif
+dependencies:
+  - imageio
+  - python
+  - pyyaml

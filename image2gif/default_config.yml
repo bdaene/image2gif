@@ -1,0 +1,4 @@
+
+IMAGE2GIF:
+  default_duration_in_seconds: 1
+  speed_factor: 0.8
