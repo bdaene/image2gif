@@ -40,7 +40,14 @@ def convert(source_directory: Path, output_file: Path):
 
     speed_factor = config['IMAGE2GIF']['speed_factor']
 
-    with imageio.get_writer(output_file, mode='I', duration=smallest_duration / 100 / speed_factor) as writer:
+    if output_file.suffix == '.gif':
+        params = dict(mode='I', duration=smallest_duration / 100 / speed_factor)
+    elif output_file.suffix == '.mp4':
+        params = dict(fps=100*speed_factor//smallest_duration)
+    else:
+        ValueError(f"Unknown output file suffix {output_file.suffix}")
+
+    with imageio.get_writer(output_file, **params) as writer:
         for file, duration in zip(image_files, durations):
             logging.info("Adding %s", file.name)
             image = imageio.imread(file)

@@ -1,5 +1,9 @@
 name: image2gif
+channels:
+  - default
+  - conda-forge
 dependencies:
   - imageio
+  - imageio-ffmpeg
   - python
   - pyyaml
